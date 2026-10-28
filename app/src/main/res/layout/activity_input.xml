@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_input"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main_gradient"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <!-- Header Include -->
+    <include
+        android:id="@+id/zicHeader"
+        layout="@layout/layout_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Form Content Container with Unified 24dp Padding -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="24dp"
+        app:layout_constraintTop_toBottomOf="@id/zicHeader"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Screen Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Generate Password"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:letterSpacing="-0.02"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="8dp"
+            android:accessibilityHeading="true" />
+
+        <!-- Subtitle Description -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter up to 16 characters to generate a repeatable password using your ZIC key."
+            android:textSize="14sp"
+            android:lineSpacingExtra="4dp"
+            android:textColor="#94A3B8"
+            android:layout_marginBottom="28dp" />
+
+        <!-- Modern Outlined Text Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            app:boxBackgroundColor="#121212"
+            app:boxStrokeColor="#334155"
+            app:boxStrokeWidth="2dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:boxStrokeErrorColor="#FF7B7B"
+            app:hintTextColor="#94A3B8"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="16"
+            app:cursorColor="@color/white"
+            app:counterTextColor="@color/white"
+            android:layout_marginBottom="12dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textToEncode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:singleLine="true"
+                android:maxLength="16"
+                android:textColor="@android:color/white"
+                android:textColorHint="#64748B"
+                android:imeOptions="actionDone"
+                android:paddingTop="18dp"
+                android:paddingBottom="18dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Action Button (Overriding ZICPrimaryButton purple tint) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/encodeButton"
+            style="@style/ZICPrimaryButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Encode Password"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="16dp"
+            app:backgroundTint="#FFFFFF"
+            android:textColor="#000000"
+            app:icon="@drawable/ic_refresh"
+            app:iconTint="#000000"
+            app:iconGravity="textStart"
+            app:iconPadding="10dp" />
+
+    </LinearLayout>
+
+    <!-- ========================================== -->
+    <!-- RADIAL MENU OPTIONS (North-West, North, North-East) -->
+    <!-- ========================================== -->
+
+    <!-- Option 1: North-West (Generate Key) -->
+    <LinearLayout
+        android:id="@+id/generateKeyLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/manageKey"
+        app:layout_constraintEnd_toStartOf="@id/manageKey"
+        tools:visibility="visible">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/generateKey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Generate Key"
+            app:fabSize="mini"
+            app:backgroundTint="#1E293B"
+            app:srcCompat="@drawable/ic_camera"
+            app:tint="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            android:text="Generate Key"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Option 2: North (Import Key) -->
+    <LinearLayout
+        android:id="@+id/importKeyLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/manageKey"
+        app:layout_constraintEnd_toEndOf="@id/manageKey"
+        app:layout_constraintStart_toStartOf="@id/manageKey"
+        tools:visibility="visible">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/importKey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Import Key"
+            app:fabSize="mini"
+            app:backgroundTint="#1E293B"
+            app:srcCompat="@drawable/ic_qr_code_scanner"
+            app:tint="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            android:text="Import Key"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Option 3: North-East (Export Key) -->
+    <LinearLayout
+        android:id="@+id/exportKeyLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/manageKey"
+        app:layout_constraintStart_toEndOf="@id/manageKey"
+        tools:visibility="visible">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/exportKey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Export Key"
+            app:fabSize="mini"
+            app:backgroundTint="#1E293B"
+            app:srcCompat="@drawable/ic_qr_code"
+            app:tint="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            android:text="Export Key"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Center Bottom Key Management FAB Button -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/manageKey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="Key Management Menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:backgroundTint="#1E293B"
+        app:srcCompat="@drawable/ic_key"
+        app:tint="#FFFFFF" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

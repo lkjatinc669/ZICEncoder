@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main_gradient"
+    android:padding="24dp"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <!-- Header Include -->
+    <include
+        android:id="@+id/zicHeader"
+        layout="@layout/layout_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Title & Subtitle Section -->
+    <TextView
+        android:id="@+id/tvScreenTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="New Key"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:letterSpacing="-0.02"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:accessibilityHeading="true"
+        app:layout_constraintTop_toBottomOf="@id/zicHeader"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvScreenSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Generate your ZIC key from a photo"
+        android:textSize="14sp"
+        android:textColor="#94A3B8"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tvScreenTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Camera Preview Card Container (Fills remaining height between subtitle and buttons) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cameraCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="#121212"
+        app:strokeWidth="1dp"
+        app:strokeColor="#334155"
+        app:layout_constraintTop_toBottomOf="@id/tvScreenSubtitle"
+        app:layout_constraintBottom_toTopOf="@id/btnCapture"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.camera.view.PreviewView
+                android:id="@+id/viewFinder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0A0A0A"
+                app:scaleType="fillCenter"
+                app:implementationMode="compatible" />
+
+            <!-- Camera Guidance Overlay -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="#CC0A0A0A">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Position your photo clearly"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="The captured image will be hashed to create your key."
+                    android:textSize="13sp"
+                    android:lineSpacingExtra="3dp"
+                    android:textColor="#94A3B8" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Capture Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCapture"
+        style="@style/ZICPrimaryButton"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="12dp"
+        android:text="Capture Photo &amp; Create Key"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:cornerRadius="16dp"
+        app:backgroundTint="#FFFFFF"
+        android:textColor="#000000"
+        app:icon="@drawable/ic_camera"
+        app:iconTint="#000000"
+        app:iconGravity="textStart"
+        app:iconPadding="10dp"
+        app:layout_constraintBottom_toTopOf="@id/btnBackMain"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Cancel Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBackMain"
+        style="@style/ZICOutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:text="Cancel"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

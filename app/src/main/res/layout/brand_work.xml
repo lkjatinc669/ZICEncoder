@@ -1,0 +1,28 @@
+<LinearLayout android:id="@+id/headerContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_marginTop="16dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/playfair_display_extra_bold"
+        android:text="ZIC"
+        android:textColor="#FFFFFF"
+        android:textSize="72sp"
+        android:includeFontPadding="false"
+        android:accessibilityHeading="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="Encrypter"
+        android:textColor="#E6FFFFFF"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp" />
+
+</LinearLayout>

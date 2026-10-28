@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="keypad_button_size">76dp</dimen>
+    <dimen name="keypad_button_margin">8dp</dimen>
+    <dimen name="passcode_dot_size">12dp</dimen>
+    <dimen name="passcode_dot_margin">6dp</dimen>
+</resources>

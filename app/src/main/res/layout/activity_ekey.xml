@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/barcodeMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main_gradient"
+    android:padding="24dp"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <!-- Header Include -->
+    <include
+        android:id="@+id/zicHeader"
+        layout="@layout/layout_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Screen Title -->
+    <TextView
+        android:id="@+id/tvScreenTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Key Barcode"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:letterSpacing="-0.02"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:accessibilityHeading="true"
+        app:layout_constraintTop_toBottomOf="@id/zicHeader"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Subtitle -->
+    <TextView
+        android:id="@+id/tvScreenSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Your ZIC key, encoded as a QR code"
+        android:textSize="14sp"
+        android:textColor="#94A3B8"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tvScreenTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- QR Card Container (Flexible height between subtitle and security notice) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/barcodeCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="#121212"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="#334155"
+        app:layout_constraintTop_toBottomOf="@id/tvScreenSubtitle"
+        app:layout_constraintBottom_toTopOf="@id/tvSecurityNotice"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="24dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Your Private Key"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:layout_marginBottom="6dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Scan this code with your authorized ZIC device."
+                    android:textSize="14sp"
+                    android:textColor="#94A3B8"
+                    android:gravity="center"
+                    android:layout_marginBottom="24dp" />
+
+                <!-- White background frame for reliable QR scanning -->
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="14dp"
+                    android:background="#FFFFFF"
+                    android:clipChildren="true">
+
+                    <ImageView
+                        android:id="@+id/ivKeyBarcode"
+                        android:layout_width="220dp"
+                        android:layout_height="220dp"
+                        android:contentDescription="QR code containing the ZIC key"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZIC ENCRYPTER"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    android:letterSpacing="0.12"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp" />
+
+                <TextView
+                    android:id="@+id/tvBarcodeStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Generating barcode..."
+                    android:textSize="13sp"
+                    android:gravity="center"
+                    android:textColor="#94A3B8"
+                    android:layout_marginTop="6dp" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Security Notice -->
+    <TextView
+        android:id="@+id/tvSecurityNotice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Security notice: Anyone who scans this QR code may obtain your encoded key. Keep it private."
+        android:textSize="12sp"
+        android:lineSpacingExtra="2dp"
+        android:gravity="center"
+        android:textColor="#64748B"
+        app:layout_constraintBottom_toTopOf="@id/btnBarcodeBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Bottom Action Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBarcodeBack"
+        style="@style/ZICOutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:text="Back"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        app:cornerRadius="16dp"
+        app:icon="@drawable/ic_arrow_back"
+        app:iconGravity="textStart"
+        app:iconPadding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
