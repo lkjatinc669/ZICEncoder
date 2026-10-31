@@ -164,18 +164,22 @@
     <!-- Bottom Action Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnBarcodeBack"
-        style="@style/ZICOutlinedButton"
         android:layout_width="0dp"
         android:layout_height="52dp"
         android:text="Back"
         android:textAllCaps="false"
+        android:textColor="@android:color/white"
         android:textSize="15sp"
+        app:backgroundTint="#121212"
+        app:strokeWidth="1dp"
+        app:strokeColor="#334155"
         app:cornerRadius="16dp"
         app:icon="@drawable/ic_arrow_back"
         app:iconGravity="textStart"
         app:iconPadding="8dp"
+        app:iconTint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
